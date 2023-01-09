@@ -26,5 +26,14 @@ RSpec.describe Dish, type: :model do
       expect(chili.calorie_count).to eq(301)
     end
   end
+
+  describe '#chef_name' do
+    it 'returns the name of the chef that created the dish' do
+      chef = Chef.create!(name: 'Chef')
+      chili = chef.dishes.create!(name: 'Chefs Chili', description: 'The famous schoolhouse chili')
+
+      expect(chili.chef_name).to eq("Chef")
+    end
+  end
 end
 
