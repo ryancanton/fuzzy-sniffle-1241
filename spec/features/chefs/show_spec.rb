@@ -30,4 +30,10 @@ RSpec.describe "A chef show page" do
     expect(current_path).to eq(chef_path(@chef.id))
     expect(page).to have_content('Chefs Waffles')
   end
+
+  it 'contains a link to view a list of all ingredients a chef uses' do
+    visit chef_path(@chef.id)
+
+    expect(page).to have_link('Ingredients', href: "/chefs/#{@chef.id}/ingredients")
+  end
 end
