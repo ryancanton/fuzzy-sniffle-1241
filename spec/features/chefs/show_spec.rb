@@ -19,12 +19,13 @@ RSpec.describe "A chef show page" do
   end
 
   it 'contains a form that creates a new dish for the chef' do
+    other_chef = Chef.create!(name: "other_chef")
+    dish = other_chef.dishes.create!(name: 'Chefs Waffles', description: 'The famous schoolhouse waffles')
     visit chef_path(@chef.id)
 
-    expect(page).to have_content("New Dish")
-    fill_in('Name', with: 'Chefs Waffles')
-    fill_in('Description', with: 'The famous schoolhouse waffles')
-    click_button('Create Dish')
+    expect(page).to have_content("Add Existing Dish to #{@chef.name}")
+    fill_in('id', with: dish.id)
+    click_button('Add Dish')
 
     expect(current_path).to eq(chef_path(@chef.id))
     expect(page).to have_content('Chefs Waffles')

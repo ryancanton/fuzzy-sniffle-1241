@@ -3,8 +3,9 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
   end
 
-  def create
-    Dish.create(dish_params)
+  def update
+    dish = Dish.find(params[:id])
+    dish.update(dish_params)
     redirect_to chef_path(params[:chef_id])
   end
 

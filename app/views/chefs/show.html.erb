@@ -8,11 +8,9 @@
   </ol>
 
 <br>
-<h3>New Dish</h3>
-<%= form_with url: "/dishes?chef_id=#{@chef.id}", method: :post, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-  <%= form.submit "Create Dish" %>
+<h3>Add Existing Dish to <%= @chef.name %></h3>
+<%= form_with url: "/dishes?chef_id=#{@chef.id}", method: :patch, local: true do |form| %>
+  <%= form.label :id %>
+  <%= form.text_field :id %>
+  <%= form.submit "Add Dish" %>
 <% end %>
