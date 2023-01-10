@@ -1,0 +1,18 @@
+<h1><%= @chef.name %></h1>
+<br>
+<h3>Dishes:</h3>
+  <ol>
+    <% @chef.dishes.each do |dish| %>
+      <li><%= dish.name %></li>
+    <% end %>
+  </ol>
+
+<br>
+<h3>New Dish</h3>
+<%= form_with url: "/dishes?chef_id=#{@chef.id}", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.submit "Create Dish" %>
+<% end %>
