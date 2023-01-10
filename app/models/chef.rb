@@ -4,6 +4,6 @@ class Chef < ApplicationRecord
   has_many :ingredients, through: :dishes
 
   def distinct_ingredients
-    self.ingredients
+    self.ingredients.distinct
   end
 end

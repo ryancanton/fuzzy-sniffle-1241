@@ -15,4 +15,4 @@
   <%= form.submit "Add Dish" %>
 <% end %>
 
-<%= link_to "Ingredients", "/chefs/#{@chef.id}/ingredients" %>
+<%= link_to "Ingredients", chef_ingredients_path(@chef.id) %>
